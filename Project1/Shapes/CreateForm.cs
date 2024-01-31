@@ -153,6 +153,7 @@ namespace Project1.Shapes
                     Console.WriteLine("Beräkningen är klar!");
                     Console.ReadLine();
                     _dbContext.Add(newShape);
+                    _dbContext.SaveChanges();
 
                     
 

@@ -19,12 +19,11 @@ namespace Project1Library.Data
         {
             if (dbContext.Shape.Any()) return;
 
-            var newShape = new List<Shape>();
-            
+            var newShape = new List<Shape>
+            {
+                new Shape { ShapeForm = "Rektangel", Circumference = 50, Area = 150, Lenght = 15, Width = 10 }
+            };
 
-
-            newShape.Add(new Shape { ShapeForm = "Rektangel", Circumference = 50, Area = 150, Lenght = 15 , Width = 10 });
-            
 
 
             foreach (var shape in newShape)
@@ -32,7 +31,18 @@ namespace Project1Library.Data
                 dbContext.Shape.Add(shape);
             }
 
-            
+            DateTime currentDateTime = DateTime.Now;
+
+            var newCalc = new List<Calcylate>
+            {
+                new Calcylate { Tal1 = 10, Operator = "+", Tal2 = 5, Resultat = 15, Datum = currentDateTime }
+            };
+
+
+            foreach (var newcalc in newCalc)
+            {
+                dbContext.Calcylate.Add(newcalc);
+            }
 
             dbContext.SaveChanges();
         }

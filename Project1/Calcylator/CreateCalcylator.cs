@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using static Project1Library.Data.ApplicationDBContext;
@@ -21,31 +22,46 @@ namespace Project1.Calcylator
         public void Create()
         {
             var newCalcylation = new Calcylate();
-
-            int run = 1;
-
-            while (run == 1)
             {
-                Console.WriteLine("Börja räkna (tryck 0 för att avsluta):");
-
-                string input = Console.ReadLine();
-
-                if (input == "0")
-                {
-                    run = 0;
-                    break;
-                }
-
-                try
-                {
-                    int result = EvaluateExpression(input);
-                    Console.WriteLine($"Resultat: {result}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ogiltig inmatning. Felmeddelande: {ex.Message}");
-                }
+                decimal tal1 = newCalcylation.Tal1;
+                string  = newCalcylation.Operator;
             }
+            
+
+
+                int run = 1;
+
+                while (run == 1)
+                {
+                    Console.WriteLine("Börja räkna (tryck 0 för att avsluta):");
+
+                    string input = Console.ReadLine();
+
+                    if (input == "0")
+                    {
+
+                        Console.Clear();
+                        var back = new CalcylationMenu();
+                        back.MenuChoice();
+                    }
+
+                    try
+                    {
+                        int result = EvaluateExpression(input);
+
+                       
+
+                        Console.WriteLine($"Resultat: {result}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Ogiltig inmatning. Felmeddelande: {ex.Message}");
+                    }
+                }
+                _dbContext.Add(newCalcylation);
+                _dbContext.SaveChanges();
+            }
+
         }
 
         private int EvaluateExpression(string expression)
@@ -77,10 +93,12 @@ namespace Project1.Calcylator
                     {
                         throw new DivideByZeroException("Division med noll är inte tillåtet");
                     }
+                case '√':
+                    return operand1 * operand2;
                 default:
                     throw new ArgumentException("Ogiltig operator");
-                    
+
             }
         }
     }
-}
+

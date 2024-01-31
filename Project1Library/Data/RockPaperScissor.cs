@@ -11,7 +11,13 @@ namespace Project1Library.Data
     {
         [Key] 
         public int RPSId { get; set; }
-        public int Resultat { get; set; }
+        public int Vinst { get; set; }
+        public int Oavgjort { get; set; }
+        public int Förlust { get; set; }
+        public int Genomsnitt { get; set; }
+        public DateTime Datum { get; set; }
         
+
+
     }
 }

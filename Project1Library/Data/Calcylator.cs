@@ -13,8 +13,8 @@ namespace Project1Library.Data
         [Key] 
         public int CalcylateId { get; set; }
         public decimal Tal1 { get; set; }
-        public decimal Tal2 { get; set;}
         public string Operator { get; set; }
+        public decimal Tal2 { get; set;}
         public decimal Resultat { get; set; }
         public DateTime Datum { get; set; }
     }

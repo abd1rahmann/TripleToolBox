@@ -18,8 +18,8 @@ namespace Project1Library.Migrations
                     CalcylateId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Tal1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Tal2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Operator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tal2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Resultat = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Datum = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
