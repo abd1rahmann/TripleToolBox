@@ -16,8 +16,9 @@ namespace Project1Library.Data
         public int Förlust { get; set; }
         public int Genomsnitt { get; set; }
         public DateTime Datum { get; set; }
-        
-
+        public string SpelarensDrag { get; set; }
+        public string DatornsDrag { get; set; }
+        public string Resultat { get; set; }
 
     }
 }

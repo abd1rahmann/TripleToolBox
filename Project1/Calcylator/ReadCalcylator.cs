@@ -40,7 +40,7 @@ namespace Project1.Calcylator
 
 
                             Console.WriteLine("\n==================================================================================================");
-                            Console.WriteLine($"ID: {calcylate.CalcylateId}|| {calcylate.Tal1} {calcylate.Operator} {calcylate.Tal2}");
+                            Console.WriteLine($"||{calcylate.Tal1} {calcylate.Operator} {calcylate.Tal2} = {calcylate.Resultat}");
                             Console.WriteLine("====================================================================================================\n");
 
 

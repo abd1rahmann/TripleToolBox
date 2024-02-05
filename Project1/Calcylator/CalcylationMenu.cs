@@ -38,6 +38,7 @@ namespace Project1.Calcylator
                 Console.WriteLine("===========================================================================");
 
                 var choice = Console.ReadLine();
+                Console.Clear();
                 var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 
                 options.UseSqlServer("Server=localhost;Database=Project1;Trusted_Connection=True;TrustServerCertificate=true;");
@@ -69,6 +70,7 @@ namespace Project1.Calcylator
                         case "0":
                             var back = new AppChoice();
                             back.MenuChoice();
+                            Console.Clear();
                             break;
 
                         default:

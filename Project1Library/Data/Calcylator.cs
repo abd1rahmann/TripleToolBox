@@ -17,5 +17,6 @@ namespace Project1Library.Data
         public decimal Tal2 { get; set;}
         public decimal Resultat { get; set; }
         public DateTime Datum { get; set; }
+        public bool Valid { get; set; }
     }
 }

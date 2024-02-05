@@ -38,171 +38,240 @@ namespace Project1.Shapes
             Console.WriteLine("===========================================================================");
             Console.WriteLine("Välj vilken form du vill räkna area och omkrets på: \n");
 
-            string choice = Console.ReadLine();
-            switch (choice)
+            bool run = true;
+            while (run)
             {
-                case "1":
-                    Console.WriteLine("Ange längden på rektangeln: cm");
-                    decimal lenght = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange bredden på rektangeln: cm");
-                    decimal width = Convert.ToDecimal(Console.ReadLine());
+                int choice;
+                
+                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0)
+                {
+                    Console.WriteLine("Inmatningen är ogiltig.");
+                }
 
-                    newShape.ShapeForm = "Rektangel";
-                    newShape.Lenght = lenght;
-                    newShape.Width = width;
+                switch (choice)
+                {
+                    case 1:
+                        newShape.ShapeForm = "Rektangel";
 
-                    decimal circumference = newShape.Circumference;
-                    circumference = 2 * (lenght + width);
+                        Console.WriteLine("Ange längden på rektangeln: cm");
+                        decimal length = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out length) || length <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange bredden på rektangeln: cm");
+                        decimal width = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out width) || width <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
 
-                    Console.WriteLine($"Omkrets: {circumference} cm");
+                        newShape.Lenght = length;
+                        newShape.Width = width;
 
-                    decimal area = newShape.Area;
-                    area = lenght * width;
+                        decimal circumference = newShape.Circumference;
+                        circumference = 2 * (length + width);
 
-                    newShape.Area = area;
-                    newShape.Circumference = circumference;
-                    Console.WriteLine($"Area: {area} cm");
-                    _dbContext.Add(newShape);
-                    _dbContext.SaveChanges();
-                    Console.WriteLine("Beräkningen är klar!");
-                    Console.ReadLine();
+                        Console.WriteLine($"Omkrets: {circumference} cm");
 
-                    Console.Clear();
-                    var choic = new AppChoice();
-                    choic.MenuChoice();
-                    break;
-                case "2":
+                        decimal area = newShape.Area;
+                        area = length * width;
 
-                    Console.WriteLine("Ange bredden på parallellogrammet: cm");
-                    decimal widthParalello = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange längden på parallellogrammet: cm");
-                    decimal lengthParalello = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange höjden på parallellogrammet: cm");
-                    decimal heightParalello = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange basen på parallellogrammet: cm");
-                    decimal baseParalello = Convert.ToDecimal(Console.ReadLine());
+                        newShape.Area = area;
+                        newShape.Circumference = circumference;
+                        Console.WriteLine($"Area: {area} cm");
+                        newShape.Date = DateTime.Now;
+                        newShape.Valid = true;
 
+                        _dbContext.Add(newShape);
+                        _dbContext.SaveChanges();
+                        Console.WriteLine("Beräkningen är klar! Tryck på 0 för att gå tillbaka till menyn");
+                        Console.ReadLine();
 
-
-                    newShape.ShapeForm = "Parallellogram";
-
-                    newShape.Base = baseParalello;
-                    newShape.Lenght = lengthParalello;
-                    newShape.Width = widthParalello;
-                    newShape.Height = heightParalello;
+                        Console.Clear();
+                        var choic = new ShapesMenu();
+                        choic.MenuChoice();
+                        break;
+                    case 2:
+                        newShape.ShapeForm = "Parallellogram";
 
 
+                        Console.WriteLine("Ange bredden på parallellogrammet: cm");
+                        decimal sideParalello1 = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out sideParalello1) || sideParalello1 <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange längden på parallellogrammet: cm");
+                        decimal sideParalello2 = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out sideParalello2) || sideParalello2 <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange höjden på parallellogrammet: cm");
+                        decimal heightParalello = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out heightParalello) || heightParalello <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange basen på parallellogrammet: cm");
+                        decimal baseParalello = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out baseParalello) || baseParalello <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+
+                        newShape.Base = baseParalello;
+                        newShape.Side = sideParalello1;
+                        newShape.Side = sideParalello2;
+                        newShape.Height = heightParalello;
+
+                        decimal circumferenceParalello = newShape.Circumference;
+                        circumferenceParalello = 2 * (sideParalello1 + sideParalello2);
+
+                        Console.WriteLine($"Omkrets: {circumferenceParalello} cm");
+
+                        decimal areaParalello = newShape.Area;
+                        areaParalello = baseParalello * heightParalello;
+
+                        Console.WriteLine($"Area: {areaParalello} cm");
+                        newShape.Area = areaParalello;
+                        newShape.Circumference = circumferenceParalello;
+                        newShape.Valid = true;
+
+                        _dbContext.Add(newShape);
+                        _dbContext.SaveChanges();
+
+                        Console.WriteLine("Beräkningen är klar! Tryck på 0 för att gå tillbaka till menyn");
+                        Console.ReadLine();
+
+                        Console.Clear();
+                        var cho = new ShapesMenu();
+                        cho.MenuChoice();
+
+                        break;
+                    case 3:
+                        newShape.ShapeForm = "Triangel";
+
+                        Console.WriteLine("Ange första kateten på triangeln: cm");
+                        decimal katet1 = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out katet1) || katet1 <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange andra kateten på triangeln: cm");
+                        decimal katet2 = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out katet2) || katet2 <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange hypotenusan på triangeln: cm");
+                        decimal hypotenusan = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out hypotenusan) || hypotenusan <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
 
 
-                    decimal circumferenceParalello = newShape.Circumference;
-                    circumferenceParalello = 2 * (widthParalello + lengthParalello);
+                        newShape.Katet2 = katet1;
+                        newShape.Katet2 = katet2;
+                        newShape.Hypotenusan = hypotenusan;
+                        decimal circumferenceTriangle = newShape.Circumference;
 
-                    Console.WriteLine($"Omkrets: {circumferenceParalello} cm");
+                        circumferenceTriangle = katet1 + katet2 + hypotenusan;
 
-                    decimal areaParalello = newShape.Area;
-                    areaParalello = baseParalello * heightParalello;
+                        Console.WriteLine($"Omkrets: {circumferenceTriangle} cm");
 
-                    Console.WriteLine($"Area: {areaParalello} cm");
-                    newShape.Area = areaParalello;
-                    newShape.Circumference = circumferenceParalello;
+                        Console.WriteLine("Ange basen: cm");
+                        decimal baseTriangle = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out baseTriangle) || baseTriangle <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
+                        Console.WriteLine("Ange höjden: cm");
+                        decimal heightTriangle = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out heightTriangle) || heightTriangle <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
 
-                    _dbContext.Add(newShape);
-                    _dbContext.SaveChanges();
-                    
-                    Console.WriteLine("Beräkningen är klar!");
-                    Console.ReadLine();
+                        newShape.Base = baseTriangle;
+                        newShape.Height = heightTriangle;
+                        decimal areaTriangle = newShape.Area;
+                        newShape.Valid = true;
 
-                    Console.Clear();
-                    var cho = new AppChoice();
-                    cho.MenuChoice();
 
-                    break;
-                case "3":
-                    Console.WriteLine("Ange första kateten på triangeln: cm");
-                    decimal katet1 = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange andra kateten på triangeln: cm");
-                    decimal katet2 = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange hypotenusan på triangeln: cm");
-                    decimal hypotenusan = Convert.ToDecimal(Console.ReadLine());
+                        areaTriangle = (baseTriangle * heightTriangle) / 2;
+                        Console.WriteLine($"Area: {areaTriangle} cm");
 
-                    newShape.ShapeForm = "Triangel";
+                        newShape.Area = areaTriangle;
+                        newShape.Circumference = circumferenceTriangle;
+                        Console.WriteLine("Beräkningen är klar! Tryyck på 0 för att gå tillbaka till menyn.");
+                        Console.ReadLine();
+                        _dbContext.Add(newShape);
+                        _dbContext.SaveChanges();
 
-                    newShape.Katet2 = katet1;
-                    newShape.Katet2 = katet2;
-                    newShape.Hypotenusan = hypotenusan;
-                    decimal circumferenceTriangle = newShape.Circumference;
 
-                    circumferenceTriangle = katet1 + katet2 + hypotenusan;
 
-                    Console.WriteLine($"Omkrets: {circumferenceTriangle} cm");
+                        Console.Clear();
+                        var c = new ShapesMenu();
+                        c.MenuChoice();
 
-                    Console.WriteLine("Ange basen: cm");
-                    decimal baseTriangle = Convert.ToDecimal(Console.ReadLine());
-                    Console.WriteLine("Ange höjden: cm");
-                    decimal heightTriangle = Convert.ToDecimal(Console.ReadLine());
+                        break;
+                    case 4:
+                        newShape.ShapeForm = "Romb";
 
-                    newShape.Base = baseTriangle;
-                    newShape.Height = heightTriangle;
-                    decimal areaTriangle = newShape.Area;
+                        Console.WriteLine("Ange sidan på romben: ");
+                        decimal sideRomb = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out sideRomb) || sideRomb <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
 
-                    areaTriangle = (baseTriangle * heightTriangle)/2;
-                    Console.WriteLine($"Area: {areaTriangle} cm");
 
-                    newShape.Area = areaTriangle;
-                    newShape.Circumference = circumferenceTriangle;
-                    Console.WriteLine("Beräkningen är klar!");
-                    Console.ReadLine();
-                    _dbContext.Add(newShape);
-                    _dbContext.SaveChanges();
+                        newShape.Side = sideRomb;
+                        decimal circumferenceRomb = newShape.Circumference;
 
-                    
+                        circumferenceRomb = sideRomb * 4;
 
-                    Console.Clear();
-                    var c = new AppChoice();
-                    c.MenuChoice();
+                        Console.WriteLine($"Omkrets: {circumferenceRomb}");
 
-                    break;
-                case "4":
+                        Console.WriteLine("Ange höjden på romben för att beräkna arean: ");
+                        decimal heightRomb = 0;
+                        while (!decimal.TryParse(Console.ReadLine(), out heightRomb) || heightRomb <= 0)
+                        {
+                            Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt decimaltal.");
+                        }
 
-                    Console.WriteLine("Ange sidan på romben: ");
-                    decimal lenghtRomb = Convert.ToDecimal(Console.ReadLine());
+                        decimal areaRomb = newShape.Area;
+                        areaRomb = sideRomb * heightRomb;
 
-                    newShape.ShapeForm = "Romb";
-                    decimal circumferenceRomb = newShape.Circumference;
-                    newShape.Lenght = lenghtRomb;
+                        Console.WriteLine($"Area: {areaRomb}");
 
-                    circumferenceRomb = lenghtRomb * 4;
+                        newShape.Area = areaRomb;
+                        newShape.Circumference = circumferenceRomb;
+                        newShape.Valid = true;
 
-                    Console.WriteLine($"Omkrets: {circumferenceRomb}");
+                        _dbContext.Add(newShape);
+                        _dbContext.SaveChanges();
 
-                    Console.WriteLine("Ange höjden på romben för att beräkna arean: ");
-                    decimal heightRomb = Convert.ToDecimal(Console.ReadLine());
+                        Console.WriteLine("Beräkningen är klar! Tryck på 0 för att gå tillbaka till menyn");
+                        Console.ReadLine();
 
-                    decimal areaRomb = newShape.Area;
-                    areaRomb = lenghtRomb * heightRomb;
+                        Console.Clear();
+                        var a = new ShapesMenu();
+                        a.MenuChoice();
+                        break;
 
-                    Console.WriteLine($"Area: {areaRomb}");
-
-                    newShape.Area = areaRomb;
-                    newShape.Circumference = circumferenceRomb;
-
-                    _dbContext.Add(newShape);
-                    _dbContext.SaveChanges();
-
-                    Console.WriteLine("Beräkningen är klar!");
-                    Console.ReadLine();
-
-                    Console.Clear();
-                    var a = new AppChoice();
-                    a.MenuChoice();
-                    break;
-
-                    case "0":
-                    Console.Clear();
-                    var back = new ShapesMenu();
-                    back.MenuChoice();
-                    break;
-            }_dbContext.Add(newShape);
+                    case 0:
+                        Console.Clear();
+                        var back = new ShapesMenu();
+                        back.MenuChoice();
+                        break;
+                }
+                _dbContext.Add(newShape);
+            }
+            
             
         }
 
