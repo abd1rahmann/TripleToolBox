@@ -14,6 +14,7 @@ namespace Project1Library.Data
         public string ShapeForm {  get; set; } = String.Empty;
         public decimal Circumference { get; set; }
         public decimal Area { get; set; }
+        public decimal Side { get; set; }
         public decimal Lenght { get; set; }
         public decimal Width { get; set; }
         public decimal Height { get; set; }
@@ -22,5 +23,6 @@ namespace Project1Library.Data
         public decimal Katet2 { get; set; }
         public decimal Hypotenusan { get; set; }
         public DateTime Date { get; set; }
+        public bool Valid { get; set; }
     }
 }

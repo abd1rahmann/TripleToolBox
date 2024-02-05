@@ -29,16 +29,16 @@ namespace Project1.Calcylator
 
                 Console.WriteLine("===========================================================================");
                 Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
-                Console.WriteLine("\t1. ");
-                Console.WriteLine("\t2. *");
-                Console.WriteLine("\t3. /");
-                Console.WriteLine("\t4. √");
-                Console.WriteLine("\t5. %");
+                Console.WriteLine("\t1. Räkna");
+                Console.WriteLine("\t2. Se räkning");
+                Console.WriteLine("\t3. Ändra räkning");
+                Console.WriteLine("\t4. Radera räkning");
                 Console.WriteLine("\t0. Huvudmenyn");
                 Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t");
                 Console.WriteLine("===========================================================================");
 
                 var choice = Console.ReadLine();
+                Console.Clear();
                 var options = new DbContextOptionsBuilder<ApplicationDbContext>();
 
                 options.UseSqlServer("Server=localhost;Database=Project1;Trusted_Connection=True;TrustServerCertificate=true;");
@@ -70,6 +70,7 @@ namespace Project1.Calcylator
                         case "0":
                             var back = new AppChoice();
                             back.MenuChoice();
+                            Console.Clear();
                             break;
 
                         default:
