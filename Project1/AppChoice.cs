@@ -72,7 +72,7 @@ namespace Project1
                             break;
 
                         case "3":
-                            var rps = new RockPaperScissorsGame();
+                            var rps = new RockPaperScissorsGame(dbContext);
                             rps.Go();
                             break;
 

@@ -13,30 +13,30 @@ namespace Project1.RockPaperScissors
     public class RockPaperScissorsGame
     {
         private readonly ApplicationDbContext _dbContext;
-       
+
         public RockPaperScissorsGame(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
+            InitializeDatabase();
         }
 
-        public RockPaperScissorsGame()
+        private void InitializeDatabase()
         {
+            _dbContext.Database.Migrate();
         }
 
         public void Go()
         {
-            var options = new DbContextOptionsBuilder<ApplicationDbContext>();
-
-            options.UseSqlServer("Server=localhost;Database=Project1;Trusted_Connection=True;TrustServerCertificate=true;");
-            using (var dbContext = new ApplicationDbContext(options.Options))
-            
-                while (true)
+            while (true)
             {
-
                 Console.WriteLine("\nVälj ditt drag (Sten, Sax, Påse) eller avsluta med 'exit': ");
                 string playerChoice = Console.ReadLine().ToLower();
 
-                if (playerChoice == "exit") break;
+                if (playerChoice == "exit") {
+                    Console.Clear();
+                    break;
+                }
+                
 
                 string computerChoice = GetComputerChoice();
                 Console.WriteLine($"Datorns drag: {computerChoice}");
@@ -49,22 +49,18 @@ namespace Project1.RockPaperScissors
                 SaveGameResult(playerChoice, computerChoice, result);
 
                 ShowStatistics();
-
             }
         }
 
         private string GetComputerChoice()
         {
-
             string[] choices = { "sten", "sax", "påse" };
             Random random = new Random();
             return choices[random.Next(choices.Length)];
         }
 
-
         private string DetermineWinner(string playerChoice, string computerChoice)
         {
-
             if (playerChoice == computerChoice) return "Oavgjort";
             else if ((playerChoice == "sten" && computerChoice == "sax") ||
                      (playerChoice == "sax" && computerChoice == "påse") ||
@@ -80,14 +76,7 @@ namespace Project1.RockPaperScissors
 
         private void UpdateStatistics(string result)
         {
-            var stats = _dbContext.RockPaperScissor.FirstOrDefault();
-
-            if (stats == null)
-            {
-                stats = new RockPaperScissor();
-                _dbContext.Add(stats);
-                _dbContext.SaveChanges(); 
-            }
+            var stats = _dbContext.RockPaperScissor.FirstOrDefault() ?? new RockPaperScissor();
 
             switch (result)
             {
@@ -102,13 +91,12 @@ namespace Project1.RockPaperScissors
                     break;
             }
 
-            stats.Genomsnitt = CalculateAverage();
+            stats.Genomsnitt = CalculateAverage(stats);
             _dbContext.SaveChanges();
         }
 
-        private int CalculateAverage()
+        private int CalculateAverage(RockPaperScissor stats)
         {
-            var stats = _dbContext.RockPaperScissor.First();
             int totalGames = stats.Vinst + stats.Oavgjort + stats.Förlust;
             return totalGames == 0 ? 0 : (stats.Vinst * 100) / totalGames;
         }
@@ -125,12 +113,13 @@ namespace Project1.RockPaperScissors
             _dbContext.Add(gameResult);
             _dbContext.SaveChanges();
         }
-        private void ShowStatistics ()
+
+        private void ShowStatistics()
         {
-            var stats = _dbContext.RockPaperScissor.First();
+            var stats = _dbContext.RockPaperScissor.FirstOrDefault();
             Console.WriteLine("\nStatistik:");
             Console.WriteLine($"Vinster: {stats.Vinst} | Oavgjorda: {stats.Oavgjort} | Förluster: {stats.Förlust}");
             Console.WriteLine($"Genomsnittlig vinstprocent: {stats.Genomsnitt}%\n");
         }
-    } 
+    }
 }
