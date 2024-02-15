@@ -14,11 +14,10 @@ namespace Project1Library.Data
         public int Vinst { get; set; }
         public int Oavgjort { get; set; }
         public int Förlust { get; set; }
-        public int Genomsnitt { get; set; }
+        public double Genomsnitt { get; set; }
         public DateTime Datum { get; set; }
         public string SpelarensDrag { get; set; }
         public string DatornsDrag { get; set; }
         public string Resultat { get; set; }
-
     }
 }

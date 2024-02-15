@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project1.Calcylator;
-using Project1.RockPaperScissors;
-
-//using Project1.RockPaperScissor;
+using Project1.RockPaperScissorRepository;
 using Project1.Shapes;
+using Project1Library.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,8 +71,8 @@ namespace Project1
                             break;
 
                         case "3":
-                            var rps = new RockPaperScissorsGame(dbContext);
-                            rps.Go();
+                            var rps = new RockPaperScissorGame(dbContext);
+                            rps.PlayGame();
                             break;
 
                         default:
@@ -83,7 +82,6 @@ namespace Project1
                     }
                 }
             }
-
         }
     }
 }

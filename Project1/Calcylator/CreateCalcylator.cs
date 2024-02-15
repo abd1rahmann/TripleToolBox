@@ -21,11 +21,7 @@ namespace Project1.Calcylator
 
         public void Create()
         {
-            var newCalc = new Calcylate();
-
             Console.WriteLine("Ange räknesätt\n1. +\n2. -\n3. *\n4. /\n5. √\n6. % ");
-
-           
 
             bool run = true;
             while ( run )
@@ -34,6 +30,7 @@ namespace Project1.Calcylator
                 switch ( choice )
                 {
                     case "1":
+                        var calc1 = new Calcylate();
                         decimal tal1 = 0;
                         while (true)
                         {
@@ -66,23 +63,24 @@ namespace Project1.Calcylator
                         }
                         decimal result1 = tal1 + tal2;
                       
-                        newCalc.Tal1 = tal1;
-                        newCalc.Tal2 = tal2;
-                        newCalc.Operator = "+";
-                        newCalc.Resultat = result1;
-                        newCalc.Datum = DateTime.Now;
-                        newCalc.Valid = true;
+                        calc1.Tal1 = tal1;
+                        calc1.Tal2 = tal2;
+                        calc1.Operator = "+";
+                        calc1.Resultat = result1;
+                        calc1.Datum = DateTime.Now;
+                        calc1.Valid = true;
 
-                        _dbContext.Add(newCalc);
+                        _dbContext.Add(calc1);
                         _dbContext.SaveChanges();
 
-                        Console.WriteLine($"\n{newCalc.Tal1} {newCalc.Operator} {newCalc.Tal2} = {newCalc.Resultat}");
-                        Console.WriteLine("Kör igen! Välj räknesätt");
+                        Console.WriteLine($"\n{calc1.Tal1} {calc1.Operator} {calc1.Tal2} = {calc1.Resultat}");
+                        Console.WriteLine("Kör igen! Välj räknesätt eller tryck på O för att gå tillbaka till menyn.");
 
 
                         break;
 
                     case "2":
+                        var calc2 = new Calcylate();
                         decimal talEtt = 0;
                         while (true)
                         {
@@ -115,22 +113,23 @@ namespace Project1.Calcylator
 
                         decimal result2 = talEtt - talTvå;
 
-                        newCalc.Tal1 = talEtt;
-                        newCalc.Tal2 = talTvå;
-                        newCalc.Operator = "-";
-                        newCalc.Resultat = result2;
-                        newCalc.Datum = DateTime.Now;
-                        newCalc.Valid = true;
+                        calc2.Tal1 = talEtt;
+                        calc2.Tal2 = talTvå;
+                        calc2.Operator = "-";
+                        calc2.Resultat = result2;
+                        calc2.Datum = DateTime.Now;
+                        calc2.Valid = true;
 
-                        _dbContext.Add(newCalc);
+                        _dbContext.Add(calc2);
                         _dbContext.SaveChanges();
 
-                        Console.WriteLine($"{newCalc.Tal1} {newCalc.Operator} {newCalc.Tal2} = {newCalc.Resultat}");
-                        Console.WriteLine("Kör igen! Välj räknesätt");
+                        Console.WriteLine($"{calc2.Tal1} {calc2.Operator} {calc2.Tal2} = {calc2.Resultat}");
+                        Console.WriteLine("Kör igen! Välj räknesätt eller tryck på O för att gå tillbaka till menyn.");
 
                         break;
 
                     case "3":
+                        var calc3 = new Calcylate();
                         decimal talOne = 0;
                         while (true)
                         {
@@ -164,22 +163,23 @@ namespace Project1.Calcylator
 
                         decimal result3 = talOne * talTwo;
 
-                        newCalc.Tal1 = talOne;
-                        newCalc.Tal2 = talTwo;
-                        newCalc.Operator = "*";
-                        newCalc.Resultat = result3;
-                        newCalc.Datum = DateTime.Now;
-                        newCalc.Valid = true;
+                        calc3.Tal1 = talOne;
+                        calc3.Tal2 = talTwo;
+                        calc3.Operator = "*";
+                        calc3.Resultat = result3;
+                        calc3.Datum = DateTime.Now;
+                        calc3.Valid = true;
 
-                        _dbContext.Add(newCalc);
+                        _dbContext.Add(calc3);
                         _dbContext.SaveChanges();
 
-                        Console.WriteLine($"{newCalc.Tal1} {newCalc.Operator} {newCalc.Tal2} = {newCalc.Resultat}");
-                        Console.WriteLine("Kör igen! Välj räknesätt");
+                        Console.WriteLine($"{calc3.Tal1} {calc3.Operator} {calc3.Tal2} = {calc3.Resultat}");
+                        Console.WriteLine("Kör igen! Välj räknesätt eller tryck på O för att gå tillbaka till menyn.");
 
                         break;
 
                     case "4":
+                        var calc4 = new Calcylate();
                         decimal firstNum = 0;
                         while (true)
                         {
@@ -224,22 +224,23 @@ namespace Project1.Calcylator
 
 
 
-                        newCalc.Tal1 = firstNum;
-                        newCalc.Tal2 = secNum;
-                        newCalc.Operator = "/";
-                        newCalc.Resultat = result4;
-                        newCalc.Datum = DateTime.Now;
-                        newCalc.Valid = true;
+                        calc4.Tal1 = firstNum;
+                        calc4.Tal2 = secNum;
+                        calc4.Operator = "/";
+                        calc4.Resultat = result4;
+                        calc4.Datum = DateTime.Now;
+                        calc4.Valid = true;
 
-                        _dbContext.Add(newCalc);
+                        _dbContext.Add(calc4);
                         _dbContext.SaveChanges();
 
-                        Console.WriteLine($"{newCalc.Tal1} {newCalc.Operator} {newCalc.Tal2} = {newCalc.Resultat}");
-                        Console.WriteLine("Kör igen! Välj räknesätt");
+                        Console.WriteLine($"{calc4.Tal1} {calc4.Operator} {calc4.Tal2} = {calc4.Resultat}");
+                        Console.WriteLine("Kör igen! Välj räknesätt eller tryck på O för att gå tillbaka till menyn.");
 
                         break;
 
                     case "5":
+                        var calc5 = new Calcylate();
                         decimal tal;
                         double result5 = 0; 
 
@@ -267,23 +268,24 @@ namespace Project1.Calcylator
                             }
                         }
 
-                        newCalc.Tal1 = tal;
-                                newCalc.Operator = "√";
-                                newCalc.Resultat = (decimal)result5;
-                                newCalc.Datum = DateTime.Now;
-                                newCalc.Valid = true;
+                                calc5.Tal1 = tal;
+                                calc5.Operator = "√";
+                                calc5.Resultat = (decimal)result5;
+                                calc5.Datum = DateTime.Now;
+                                calc5.Valid = true;
 
-                                _dbContext.Add(newCalc);
+                                _dbContext.Add(calc5);
                                 _dbContext.SaveChanges();
 
-                        Console.WriteLine($"{newCalc.Tal1} {newCalc.Operator}= {newCalc.Resultat}");
-                        Console.WriteLine("Kör igen! Välj räknesätt");
+                        Console.WriteLine($"{calc5.Tal1} {calc5.Operator} = {calc5.Resultat}");
+                        Console.WriteLine("Kör igen! Välj räknesätt eller tryck på O för att gå tillbaka till menyn.");
 
 
 
                         break;
 
                     case "6":
+                        var calc6 = new Calcylate();
                         decimal num1 = 0;
                         while (true)
                         {
@@ -325,17 +327,17 @@ namespace Project1.Calcylator
                             }
                         }
 
-                        newCalc.Tal1 = num1;
-                        newCalc.Tal2 = num2;
-                        newCalc.Operator = "%";
-                        newCalc.Resultat = result6;
-                        newCalc.Datum = DateTime.Now;
-                        newCalc.Valid = true;
+                        calc6.Tal1 = num1;
+                        calc6.Tal2 = num2;
+                        calc6.Operator = "%";
+                        calc6.Resultat = result6;
+                        calc6.Datum = DateTime.Now;
+                        calc6.Valid = true;
 
-                        _dbContext.Add(newCalc);
+                        _dbContext.Add(calc6);
                         _dbContext.SaveChanges();
-                        Console.WriteLine($"{newCalc.Tal1} {newCalc.Operator} {newCalc.Tal2} = {newCalc.Resultat}");
-                        Console.WriteLine("Kör igen! Välj räknesätt");
+                        Console.WriteLine($"{calc6.Tal1} {calc6.Operator} {calc6.Tal2} = {calc6.Resultat}");
+                        Console.WriteLine("Kör igen! Välj räknesätt eller tryck på O för att gå tillbaka till menyn.");
 
                         break;
 
