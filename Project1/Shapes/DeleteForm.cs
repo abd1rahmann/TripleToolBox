@@ -45,11 +45,11 @@ namespace Project1.Shapes
                             Console.WriteLine("====================================================================================================\n");
                         }
 
-                        Console.WriteLine("Välj Id på den formen som du vill ta inaktivera");
-                        int shapeId = 0;
-                        bool go = false;
-                        while (go)
+                        int shapeId;
+                        while (true)
                         {
+                            Console.WriteLine("Välj Id på den formen som du vill ta inaktivera");
+
                             while (!int.TryParse(Console.ReadLine(), out shapeId) || shapeId <= 0)
                             {
                                 Console.WriteLine("Inmatningen är ogiltig. Ange ett positivt heltal.");
@@ -60,16 +60,9 @@ namespace Project1.Shapes
                                 shapeToDelete.Valid = false;
                                 _dbContext.SaveChanges();
                                 Console.WriteLine("Formen är borta! Tryck på 0 för att gå tillbaka till menyn");
-                                go = true;
-                                
+                                break;
                             }
-                            else
-                            {
-                                Console.WriteLine("Formen med det angivna ID:t kunde inte hittas. Försök igen.");
-                            }
-                            break;
                         }
-
                         break;
 
                     case "0":
