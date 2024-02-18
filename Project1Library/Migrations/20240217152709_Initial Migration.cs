@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Project1Library.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialmigration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -38,7 +38,7 @@ namespace Project1Library.Migrations
                     Vinst = table.Column<int>(type: "int", nullable: false),
                     Oavgjort = table.Column<int>(type: "int", nullable: false),
                     Förlust = table.Column<int>(type: "int", nullable: false),
-                    Genomsnitt = table.Column<int>(type: "int", nullable: false),
+                    Genomsnitt = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Datum = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SpelarensDrag = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DatornsDrag = table.Column<string>(type: "nvarchar(max)", nullable: false),

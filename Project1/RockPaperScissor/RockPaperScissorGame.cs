@@ -35,12 +35,15 @@ namespace Project1.RockPaperScissorRepository
                 switch (choice)
                 {
                     case "1":
+                        Console.Clear();
                         PlaySingleGame();
                         break;
 
                     case "2":
+
+                        Console.Clear();
                         var display = new ReadRockPaperScissor(_dbContext);
-                            display.DisplayPreviousGames();
+                        display.DisplayPreviousGames();
                         break;
 
                     case "0":
@@ -48,12 +51,18 @@ namespace Project1.RockPaperScissorRepository
                         var menu = new AppChoice();
                         menu.MenuChoice();
                         return;
+
+                    default:
+                        Console.WriteLine("Fel inmatning! Välj ett av alternativen");
+                        break;
                 }
             }
         }
 
         private void PlaySingleGame()
         {
+            var rps = new RockPaperScissor();
+
             Console.WriteLine("\nVälj ditt drag!\n1. Sten\n2. Sax\n3. Påse");
             int playerChoice = 0;
 
@@ -71,7 +80,7 @@ namespace Project1.RockPaperScissorRepository
 
             Console.WriteLine($"\nDitt val: {GetChoiceName(playerChoice)} || Datorns val: {GetChoiceName(computerChoice)}");
             Console.WriteLine($"\nResultat: {result}");
-            Console.WriteLine("\nKör igen! Eller tryck på 0 för att gå tillbaka till menyn");
+            Console.WriteLine("\nKör igen! Tryck 1 för att spela om eller tryck på 0 för att gå tillbaka till menyn");
         }
 
         private string DetermineWinner(int playerChoice, int computerChoice)
@@ -121,17 +130,17 @@ namespace Project1.RockPaperScissorRepository
             _dbContext.SaveChanges();
         }
 
-        private double CalculateAverage()
+        private decimal  CalculateAverage()
         {
-            int totalWins = _dbContext.RockPaperScissor.Sum(r => r.Vinst);
-            int totalGames = _dbContext.RockPaperScissor.Count();
+            decimal totalWins = _dbContext.RockPaperScissor.Sum(r => r.Vinst);
+            decimal totalGames = _dbContext.RockPaperScissor.Count();
 
             if (totalGames == 0)
             {
                 return 0;
             }
 
-            double winPercentage = (double)totalWins / totalGames * 100;
+            decimal winPercentage = totalWins / totalGames * 100;
 
             return Math.Round(winPercentage, 2);
         }

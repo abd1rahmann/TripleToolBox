@@ -12,8 +12,8 @@ using Project1Library.Data;
 namespace Project1Library.Migrations
 {
     [DbContext(typeof(ApplicationDBContext.ApplicationDbContext))]
-    [Migration("20240213205531_Initial migration")]
-    partial class Initialmigration
+    [Migration("20240217152709_Initial Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,8 +75,8 @@ namespace Project1Library.Migrations
                     b.Property<int>("Förlust")
                         .HasColumnType("int");
 
-                    b.Property<int>("Genomsnitt")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Genomsnitt")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Oavgjort")
                         .HasColumnType("int");

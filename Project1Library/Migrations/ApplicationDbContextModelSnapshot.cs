@@ -72,8 +72,8 @@ namespace Project1Library.Migrations
                     b.Property<int>("Förlust")
                         .HasColumnType("int");
 
-                    b.Property<int>("Genomsnitt")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Genomsnitt")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Oavgjort")
                         .HasColumnType("int");
