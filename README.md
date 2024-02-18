@@ -1,16 +1,26 @@
 # Project1
 
 ## Beskrivning
-Projekt1 är en C#-applikation som tillåter användare att utföra olika beräkningar och spela Rock, Paper, Scissors.
+Projekt1 är en C#-applikation som tillåter användare att utföra beräkningar på olika former, räkna med en miniräknare och spela Rock, Paper, Scissors.
 
 ## Funktioner
 - **Beräkningar:**
   - Användare kan räkna ut omkrets och area för olika geometriska former.
   - Beräkningar sparas i en databas för framtida referens.
+  - Det går att ändra på räkningarna.
+  - Det går att göra Soft-Delete på samtliga beräkningar
+
 
 - **Rock, Paper, Scissors-spel:**
   - Användaren kan spela Rock, Paper, Scissors mot datorn.
   - Spelet registrerar resultatet och visar statistik.
+
+   - **Miniräknare:**
+   - Användaren väljer ett räknesätt, matar in två tal och får resultat.
+   - Räkningarna sparas i en databas.
+   - Det går att ändra på räkningarna.
+   - Det går att göra Soft-Delete på samtliga beräkningar
+
 
 ## Teknologier och mönster
 - **ASP.NET Core och Entity Framework:**
@@ -34,6 +44,10 @@ Projektet är strukturerat enligt följande:
 
 - **RockPaperScissors:**
   - Innehåller klasser för att implementera Rock, Paper, Scissors-spelet.
+ 
+    - **Calcylator:**
+  - Innehåller klasser för att utföra räkningar med olika räknesätt.
+
 
 - **Controllers:**
   - MVC-controllers som hanterar användarinteraktion och routing.
