@@ -1,4 +1,4 @@
-# 🧮 Project1 – Geometry, Calculator & Rock Paper Scissors App
+# 🧮 Triple Tool Box – Geometry, Calculator & Rock Paper Scissors App
 
 **Project1** is a C# web application built with ASP.NET Core that allows users to perform calculations on geometric shapes, use a basic calculator, and play Rock, Paper, Scissors against the computer. All operations are stored in a database, with support for editing and soft deletion.
 
