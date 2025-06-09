@@ -1,70 +1,67 @@
-# Project1
+# 🧮 Project1 – Geometry, Calculator & Rock Paper Scissors App
 
-## Beskrivning
-Projekt1 är en C#-applikation som tillåter användare att utföra beräkningar på olika former, räkna med en miniräknare och spela Rock, Paper, Scissors.
+**Project1** is a C# web application built with ASP.NET Core that allows users to perform calculations on geometric shapes, use a basic calculator, and play Rock, Paper, Scissors against the computer. All operations are stored in a database, with support for editing and soft deletion.
 
-## Funktioner
-- **Beräkningar:**
-  - Användare kan räkna ut omkrets och area för olika geometriska former.
-  - Beräkningar sparas i en databas för framtida referens.
-  - Det går att ändra på räkningarna.
-  - Det går att göra Soft-Delete på samtliga beräkningar
+---
 
+## 💼 Tech Stack
 
-- **Rock, Paper, Scissors-spel:**
-  - Användaren kan spela Rock, Paper, Scissors mot datorn.
-  - Spelet registrerar resultatet och visar statistik.
+- C#
+- ASP.NET Core
+- Entity Framework Core
+- SQL Server (or compatible database)
+- MVC (Model-View-Controller) Pattern
+- Dependency Injection
 
-   - **Miniräknare:**
-   - Användaren väljer ett räknesätt, matar in två tal och får resultat.
-   - Räkningarna sparas i en databas.
-   - Det går att ändra på räkningarna.
-   - Det går att göra Soft-Delete på samtliga beräkningar
+---
 
+## 🚀 Features
 
-## Teknologier och mönster
-- **ASP.NET Core och Entity Framework:**
-  - Projekten använder ASP.NET Core för webbapplikationens backend.
-  - Entity Framework används för att interagera med databasen.
+### 📐 Geometry Calculations
+- Calculate perimeter and area for various shapes
+- Save all calculations to the database
+- Edit previous calculations
+- Perform **soft delete** (non-destructive deletion)
 
-- **MVC-mönster:**
-  - Applikationen använder Model-View-Controller (MVC)-mönstret för att separera ansvarsområden och underlätta underhåll.
+### ✂️ Rock, Paper, Scissors Game
+- Play against the computer
+- Automatically stores and displays results/statistics
 
-- **Dependency Injection (DI):**
-  - DI används för att hantera och injicera beroenden i olika delar av applikationen, vilket gör koden mer testbar och underlättar lös koppling.
+### ➕ Calculator
+- Choose operation type, input two numbers, and get the result
+- Save all operations in the database
+- Edit existing operations
+- Perform **soft delete** on any entry
 
-## Struktur
-Projektet är strukturerat enligt följande:
+---
 
-- **Data:**
-  - Innehåller dataklasser och DbContext för att hantera databasinteraktion.
+## 🧩 Architecture Overview
 
-- **Shapes:**
-  - Innehåller klasser för att utföra beräkningar av olika geometriska former.
+### ✅ ASP.NET Core & Entity Framework
+- ASP.NET Core is used for the backend logic and routing
+- EF Core handles data persistence and querying
 
-- **RockPaperScissors:**
-  - Innehåller klasser för att implementera Rock, Paper, Scissors-spelet.
- 
-    - **Calcylator:**
-  - Innehåller klasser för att utföra räkningar med olika räknesätt.
+### ✅ MVC Pattern
+- Separates concerns between data (Model), presentation (View), and logic (Controller)
 
+### ✅ Dependency Injection (DI)
+- All services are injected for improved testability and loose coupling
 
-- **Controllers:**
-  - MVC-controllers som hanterar användarinteraktion och routing.
+---
 
-- **Views:**
-  - HTML-filer som representerar användargränssnittet.
+## 📁 Project Structure
 
-## Installation och körning
-1. Klona projektet från GitHub: `git clone https://github.com/din-anvandare/projekt1.git`
-2. Öppna projektet i Visual Studio eller valfri IDE.
-3. Konfigurera databasanslutningen i `appsettings.json`.
-4. Kör migrationskommandon för att skapa och uppdatera databasen: `dotnet ef database update`.
-5. Kör applikationen: `dotnet run`.
+├── Data/ --> Database context and data classes
+├── Shapes/ --> Geometry calculation logic
+├── RockPaperScissors/ --> Game logic and result tracking
+├── Calcylator/ --> Basic calculator functionality
+├── Controllers/ --> ASP.NET MVC controllers
+└── Views/ --> Razor views (UI templates)
 
-## Bidra
-1. Forka projektet.
-2. Skapa en gren för dina ändringar: `git checkout -b din-gren`.
-3. Gör ändringarna och bekräfta dem: `git commit -m "Beskrivning av ändringar"`.
-4. Pusha till din gren: `git push origin din-gren`.
-5. Skapa en Pull Request.
+---
+
+## 💾 Installation
+
+1. **Clone the repository**
+   git clone https://github.com/your-username/projekt1.git
+   cd projekt1
